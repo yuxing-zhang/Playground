@@ -288,8 +288,24 @@ class Graph:
                     pre[v] = u
         return dist, pre
 
+    # Floyd-Warshall algorithm for all pairs shortest path
     def fw(self):
-        
+        # Shape of dist is (n+1) * n * n
+        dist = [[[float('inf')] * self.n for _ in range(self.n)] for _ in
+                range(self.n + 1)]
+        # Initial dist(i, j, 0) = E[(i, j)] if i and j is connected,
+        #                         inf otherwise
+        for i in range(self.n):
+            for j in self.V[i]:
+                dist[0][i][j] = E[(i, j)]
+        # dist(i, j, k+1) = min{dist(i, j, k),
+        #                       dist(i, K+1, k) + dist(K+1, j, k)}
+        for k in range(1, self.n+1):
+            for i in range(self.n):
+                for j in range(self.n):
+                    dist[k][i][j] = min(dist[k-1][i][j], dist[k-1][i][k] +
+                            dist[k-1][k][j])
+        return dist[self.n]
 
     # Kruskal's algorithm to find a minimum spanning tree
     # The MST is represented by a set of edges
