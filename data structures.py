@@ -13,7 +13,7 @@ class List():
     # String representation
     def __str__(self):
         s = ''
-        p = head
+        p = self.head
         while p:
             s += '%s -> ' % str(p.data)
             p = p.next
@@ -30,7 +30,7 @@ class List():
             self.head = Node(x)
         else:
             p = Node(x)
-            self.head.next, self.head = p, p
+            self.head, p.next = p, self.head
         self.size += 1
 
     def delete(self):
@@ -49,7 +49,7 @@ class Stack(List):
     def push(self, x):
         self.insert(x)
 
-    def pop():
+    def pop(self):
         return self.delete()
 
     # Check the head element
@@ -216,7 +216,7 @@ class Disjoint():
 #   Dijkstra's shortest path algorithm
 #   Floyd-Warshall algorithm for all-pairs shortest path
 #   Kruskal's MST algorithm
-class Graph:
+class Graph():
     # Graph initialization specified by # of its vertices
     def __init__(self, n):
         self.V = [[] for _ in range(n)]
