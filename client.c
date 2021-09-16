@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <netdb.h>
 #include <string.h>
 #include <unistd.h>
 
@@ -19,7 +20,7 @@ int main(int argc, char **argv) {
     memset(&servaddr, 0, sizeof servaddr);
 
     servaddr.sin_family = AF_INET;
-    inet_aton(argv[1], &servaddr.sin_addr);
+    servaddr.sin_addr = *(struct in_addr *) gethostbyname(argv[1])->h_addr;
     servaddr.sin_port = htons(PORT);
 
     if (connect(sockfd, (struct sockaddr *) &servaddr, sizeof servaddr)) {
