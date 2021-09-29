@@ -19,7 +19,8 @@ int my_system(const char *command) {
     }
 
     int status;
-    waitpid(p, &status, 0);
+    if (waitpid(p, &status, 0) != p)
+        status = -1;
     return status;
 }
 
