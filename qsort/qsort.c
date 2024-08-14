@@ -29,6 +29,10 @@ int main() {
     for (int i = 0; i < 10; i++) {
         arry[i] = rand() % 100;
     }
+    for (int i = 0; i < 10; i++) {
+        printf("%d ", arry[i]);
+    }
+    putchar('\n');
     qs(arry, 10);
     for (int i = 0; i < 10; i++) {
         printf("%d ", arry[i]);

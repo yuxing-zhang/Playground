@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 qs() {
     if (($1 >= $2)); then return; fi
     local i

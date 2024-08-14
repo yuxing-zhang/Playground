@@ -16,5 +16,6 @@ def qs(s):
 
 if __name__ == '__main__':
     s = np.random.randint(100, size=10)
+    print(s)
     qs(s)
     print(s)
