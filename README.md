@@ -1,12 +1,20 @@
-# Playground
+# Data Structures & Algorithms
+A growing list of my implemenations of various data structures and
+algorithms.
 
-This repo contains my implementation of stuff that interests me.
-
-Potential topics include:
-* Algorithms and data structures
-* Machine learning models
-  * Generative Adversarial Networkds
-  * Transformers
-* System programming in C
-* Numerical methods in Julia
-* Functional programming in Haskell
+### Currently implementd
+* Algorithms
+  - Quicksort (in multiple languages)
+  - Graph algorithms
+    * DFS
+    * BFS
+    * Dijkstra's
+    * Kruskal's
+    * Floyd-Warshall
+* Data structures
+  - Linked list
+  - Stack
+  - Queue
+  - Heap
+  - Disjoint set
+  - Segment tree
