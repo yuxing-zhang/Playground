@@ -24,7 +24,7 @@ BEGIN
     EXECUTE format('CREATE TEMPORARY TABLE %I ON COMMIT DROP AS
                     SELECT v FROM %s WHERE v > $1', tp, t) USING u;
     RETURN QUERY SELECT * FROM qsort(format('%I', tp));
-ENd
+END
 $$ LANGUAGE plpgsql;
 
 CREATE TABLE s(v) AS SELECT (random() * 100)::int FROM generate_series(1, 10);
