@@ -1,4 +1,3 @@
-# A clearer implementation of segment tree
 class ST():
     def __init__(self, s, f):
         self.s = s
