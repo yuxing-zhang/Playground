@@ -4,26 +4,26 @@ DECLARE
     b bool;
     tp text;
 BEGIN
-    EXECUTE format('SELECT count(*) > 0 FROM %s', t) INTO b;
+    EXECUTE 'SELECT count(*) > 0 FROM ' || t INTO b;
     IF NOT b THEN
         RETURN;
     END IF;
-    EXECUTE format('SELECT v FROM %s LIMIT 1', t) INTO u;
+    EXECUTE 'SELECT v FROM ' || t || ' LIMIT 1' INTO u;
     LOOP
         SELECT random() INTO tp;
         EXIT WHEN NOT EXISTS (SELECT FROM pg_tables WHERE tablename = tp);
     END LOOP;
     EXECUTE format('CREATE TEMPORARY TABLE %I ON COMMIT DROP AS
                     SELECT v FROM %s WHERE v < $1', tp, t) USING u;
-    RETURN QUERY SELECT * FROM qsort(format('%I', tp));
-    RETURN QUERY EXECUTE format('SELECT v FROM %s WHERE v = $1', t) USING u;
+    RETURN QUERY SELECT * FROM qsort(quote_ident(tp));
+    RETURN QUERY EXECUTE 'SELECT v FROM ' || t || ' WHERE v = $1' USING u;
     LOOP
         SELECT random() INTO tp;
         EXIT WHEN NOT EXISTS (SELECT FROM pg_tables WHERE tablename = tp);
     END LOOP;
     EXECUTE format('CREATE TEMPORARY TABLE %I ON COMMIT DROP AS
                     SELECT v FROM %s WHERE v > $1', tp, t) USING u;
-    RETURN QUERY SELECT * FROM qsort(format('%I', tp));
+    RETURN QUERY SELECT * FROM qsort(quote_ident(tp));
 END
 $$ LANGUAGE plpgsql;
 

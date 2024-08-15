@@ -1,9 +1,12 @@
 # Quicksort in Multiple Languages
 Quicksort is my de facto "Hello, World!" program for a given programming
-language. Quicksort suits this purpose because it demonstrates
-* control structures (conditional/looping)
+language. Quicksort suits this purpose because it is conceptually simple,
+yet it demonstrates the
+* control flows (conditional/looping)
 * elemental data structures (list)
-* recursion
+* recursive function calls
+
+of the language.
 
 ### Usage
 **C**
